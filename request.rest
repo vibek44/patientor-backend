@@ -1,0 +1,14 @@
+#GET http://localhost:3001/api/patients
+
+#PUT http://localhost:3000/api/diaries
+
+POST http://localhost:3001/api/patients 
+Content-Type: application/json
+
+{
+ "name":"chrine",
+ "ssn":"sdf",
+ "dateOfBirth":"2012-2-07",
+ "gender":"female",
+ "occupation":"cook"
+}
