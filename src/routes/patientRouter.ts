@@ -9,6 +9,20 @@ patientRouter.get('/',(_req,res)=>{
  res.send(patientService.getPatientData());
 });
 
+patientRouter.get('/:id',(req,res)=>{
+  try {
+    const patient=patientService.getPatientDetail(req.params.id);
+  res.json(patient);
+  } catch (error:unknown) {
+    let err='Error occured: ';
+    if(error instanceof Error){
+       err+=error.message;
+    }
+    res.send(err);
+  }
+  
+  
+});
 patientRouter.post('/',(req,res)=>{
   try {
     const newPatientEntry=getNewPatientEntry(req.body);
