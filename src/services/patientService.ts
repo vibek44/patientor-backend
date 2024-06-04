@@ -8,19 +8,30 @@ return diagnosisData;
 };
 
 const getPatientData=():NonSensitiveData[]=>{
-   return patientData.map(({id,name,dateOfBirth,gender,occupation})=>({
+  return patientData.map(({id,name,dateOfBirth,gender,occupation})=>({
     id,
     name,
     dateOfBirth,
     gender,
-    occupation
-   }));
+    occupation,
+   
+  }));
+};
+
+const getPatientDetail=(patientId:string):Patient=>{
+  const result= patientData.find((p)=>p.id===patientId);
+  if(result){
+    return result;
+  }
+  throw new Error('patient not found');
+
 };
 
 const addPatient=(newPatientEntry:NewPatient):Patient=>{
   const patient:Patient={
     id:uuid(),
     ...newPatientEntry
+   
   };
   patientData.push(patient);
   return patient;
@@ -30,5 +41,6 @@ const addPatient=(newPatientEntry:NewPatient):Patient=>{
 export default {
   getDiagnosisData,
   getPatientData,
-  addPatient
+  addPatient,
+  getPatientDetail
 };
