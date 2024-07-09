@@ -58,17 +58,15 @@ const parseEntries=(entries:unknown):[]=>{
 
  if(!entries || !Array.isArray(entries)){
   throw new Error('incorrect Entries');
-  
   }
   return [];
-  
 };
 
 const getNewPatientEntry=(entry:unknown):NewPatient=>{
   if(!entry || typeof entry!=='object'){
     throw new Error('Incorrect or missing data');
   }
-  if('name' in entry && 'ssn' in entry && 'dateOfBirth' in entry && 'gender' in entry && 'occupation' in entry && 'entries' in entry && 'entries' in entry ){
+  if('name' in entry && 'ssn' in entry && 'dateOfBirth' in entry && 'gender' in entry && 'occupation' in entry && 'entries' in entry ){
     const newEntry:NewPatient={
       name:parseName(entry.name),
       dateOfBirth:parseDateOfBirth(entry.dateOfBirth),
