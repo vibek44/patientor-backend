@@ -12,11 +12,11 @@ patientRouter.get('/',(_req,res)=>{
 patientRouter.get('/:id',(req,res)=>{
   try {
     const patient=patientService.getPatientDetail(req.params.id);
-  res.json(patient);
+    res.json(patient);
   } catch (error:unknown) {
     let err='Error occured: ';
     if(error instanceof Error){
-       err+=error.message;
+      err+=error.message;
     }
     res.send(err);
   }
